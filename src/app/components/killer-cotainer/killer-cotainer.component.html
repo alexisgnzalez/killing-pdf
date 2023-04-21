@@ -8,8 +8,24 @@
       <app-killer-comp id="capture"></app-killer-comp>
     </mat-card-content>
     <mat-card-actions align="end">
-      <button mat-button>Download jsPDF</button>
-      <button mat-button>Download PDFKit</button>
+      <button
+        mat-button
+        (click)="jsPdfStuff()"
+        matTooltipPosition="above"
+        [matTooltipDisabled]="image"
+        matTooltip="Firt Generate Snapshot"
+      >
+        Download jsPDF
+      </button>
+      <button
+        mat-button
+        (click)="pdfKitStuff()"
+        matTooltipPosition="above"
+        [matTooltipDisabled]="image"
+        matTooltip="Firt Generate Snapshot"
+      >
+        Download PDFKit
+      </button>
       <button mat-button (click)="takeSnapShot()">Snapshot</button>
     </mat-card-actions>
   </mat-card>

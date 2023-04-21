@@ -7,6 +7,7 @@ import { KillerCompComponent } from './components/killer-comp/killer-comp.compon
 import { KillerCotainerComponent } from './components/killer-cotainer/killer-cotainer.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [AppComponent, KillerCompComponent, KillerCotainerComponent],
@@ -16,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
