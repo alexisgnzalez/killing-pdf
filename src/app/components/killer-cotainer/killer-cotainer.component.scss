@@ -1,3 +1,13 @@
 mat-card {
   width: 50vw;
 }
+
+#capturado {
+  max-width: 620px;
+}
+
+.mat-card-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}

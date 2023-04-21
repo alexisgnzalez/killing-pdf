@@ -1,13 +1,23 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Pedefeando...</mat-card-title>
-    <mat-card-subtitle>Should we jsPdf or PDFKit?</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <app-killer-comp></app-killer-comp>
-  </mat-card-content>
-  <mat-card-actions align="end">
-    <button mat-button>Download jsPDF</button>
-    <button mat-button>Download PDFKit</button>
-  </mat-card-actions>
-</mat-card>
+<div class="mat-card-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Pedefeando...</mat-card-title>
+      <mat-card-subtitle>Should we jsPdf or PDFKit?</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <app-killer-comp id="capture"></app-killer-comp>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-button>Download jsPDF</button>
+      <button mat-button>Download PDFKit</button>
+      <button mat-button (click)="takeSnapShot()">Snapshot</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card *ngIf="image">
+    <img id="capturado" [src]="image" alt="capture of killer component" />
+    <mat-card-actions align="end">
+      <button mat-button (click)="eraseSnapShot()">Erase</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
