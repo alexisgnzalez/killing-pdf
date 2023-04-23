@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
-const PDFDocument = require('pdfkit');
-const blobStream = require('blob-stream');
 
 @Component({
   selector: 'app-killer-cotainer',
@@ -36,6 +34,7 @@ export class KillerCotainerComponent implements OnInit {
 
   pdfKitStuff() {
     if (this.image) {
+      /*
       const pdf = new PDFDocument();
       const stream = pdf.pipe(blobStream());
       pdf
@@ -57,7 +56,7 @@ export class KillerCotainerComponent implements OnInit {
         a.href = url;
         a.download = 'chimuelopdfkit';
         a.click();
-      });
+      });*/
     }
   }
 }
