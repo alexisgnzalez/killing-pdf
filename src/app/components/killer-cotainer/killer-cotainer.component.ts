@@ -32,31 +32,40 @@ export class KillerCotainerComponent implements OnInit {
     }
   }
 
-  pdfKitStuff() {
-    if (this.image) {
-      /*
-      const pdf = new PDFDocument();
-      const stream = pdf.pipe(blobStream());
-      pdf
-        .font('fonts/PalatinoBold.ttf')
-        .fontSize(25)
-        .text('Holis soy un pdf con PdfKit!', 100, 100);
-      pdf.image(this.image, {
-        fit: [250, 300],
-        align: 'center',
-        valign: 'center',
-      });
-      pdf.end();
-      stream.on('finish', function () {
-        const blob = stream.toBlob('application/pdf');
-        let a = document.createElement('a');
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        let url = window.URL.createObjectURL(blob);
-        a.href = url;
-        a.download = 'chimuelopdfkit';
-        a.click();
-      });*/
+  async shareStuff() {
+    // @ts-ignore
+    const aux = await html2canvas(document.querySelector('#capture'));
+    aux.toBlob((blob: any) => {
+      let file = new File([blob], 'image.png', { type: 'image/png' });
+      // Utiliza el archivo aquí
+      // console.log('navigator can share: ', navigator.canShare(this.image));
+      if (navigator.share && this.image) {
+        navigator
+          .share({
+            files: [file],
+            // url: 'https://www.google.com',
+          })
+          .then(() => {
+            console.log('Compartido exitosamente');
+          })
+          .catch((error) => {
+            console.error('Error al compartir:', error);
+          });
+      } else {
+        console.log('La API de Web Share no está disponible');
+      }
+    }, 'image/png');
+  }
+
+  dataURLtoFile(dataurl: any, filename: any) {
+    let arr = dataurl.split(',');
+    let mime = arr[0].match(/:(.*?);/)[1];
+    let bstr = atob(arr[1]);
+    let n = bstr.length;
+    let u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
     }
+    return new File([u8arr], filename, { type: mime });
   }
 }

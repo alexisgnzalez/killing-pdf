@@ -19,19 +19,21 @@
       </button>
       <button
         mat-button
-        (click)="pdfKitStuff()"
+        (click)="shareStuff()"
         matTooltipPosition="above"
         [matTooltipDisabled]="image"
         matTooltip="Firt Generate Snapshot"
       >
-        Download PDFKit
+        Share Image
       </button>
       <button mat-button (click)="takeSnapShot()">Snapshot</button>
     </mat-card-actions>
   </mat-card>
 
   <mat-card *ngIf="image">
-    <img id="capturado" [src]="image" alt="capture of killer component" />
+    <div class="img-container">
+      <img id="capturado" [src]="image" alt="capture of killer component" />
+    </div>
     <mat-card-actions align="end">
       <button mat-button (click)="eraseSnapShot()">Erase</button>
     </mat-card-actions>
