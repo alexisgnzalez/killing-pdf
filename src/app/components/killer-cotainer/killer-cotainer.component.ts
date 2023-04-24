@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import html2canvas from 'html2canvas';
-import { jsPDF } from 'jspdf';
+import { PdfServiceService } from 'src/app/services/pdf-service.service';
 
 @Component({
   selector: 'app-killer-cotainer',
@@ -9,7 +9,7 @@ import { jsPDF } from 'jspdf';
 })
 export class KillerCotainerComponent implements OnInit {
   image: any;
-  constructor() {}
+  constructor(private pdfService: PdfServiceService) {}
 
   ngOnInit(): void {}
 
@@ -23,9 +23,11 @@ export class KillerCotainerComponent implements OnInit {
     this.image = null;
   }
 
-  jsPdfStuff() {
+  async jsPdfStuff() {
     if (this.image) {
-      const pdf = new jsPDF();
+      const pdfServ = await this.pdfService.loadPdfModule();
+      console.log(pdfServ);
+      const pdf = new pdfServ();
       pdf.text('Holis soy un pdf con jspdf!', 10, 10);
       pdf.addImage(this.image, 'JPEG', 10, 15, 160, 70);
       pdf.save('jspdftest.pdf');
