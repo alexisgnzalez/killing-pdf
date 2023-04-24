@@ -21,5 +21,9 @@ mat-card {
 @media (max-width: 480px) {
   mat-card {
     max-width: 70vw;
+    mat-card-actions {
+      display: flex;
+      flex-direction: column-reverse;
+    }
   }
 }
